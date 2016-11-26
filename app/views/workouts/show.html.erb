@@ -2,6 +2,12 @@
 
 <!-- MAIN PAGE CONTENT -->
 <h1><%= @workout.title %></h1>
-<p><%= @workout.length %></p>
-<p><%= @workout.mood %></p>
-<p><%= @workout.workout_type %></p>
+<p>Date: <%= @workout.date %></p>
+<p>How I was feeling this day: <%= @workout.mood %></p>
+<p><%= @workout.workout_type.name %></p>
+<% if @workout.begin %>
+  <p>Start Time: <%= @workout.begin.strftime("%I:%M %p") %></p>
+<% end %>
+<% if @workout.end %>
+  <p>End Time: <%= @workout.end.strftime("%I:%M %p") %></p>
+<% end %>
