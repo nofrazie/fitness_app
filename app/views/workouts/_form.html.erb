@@ -1,0 +1,33 @@
+<%= form_for(@workout) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mood %>
+    <%= f.text_field :mood, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :begin %>
+    <%= f.time_field :begin, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end %>
+    <%= f.time_field :end, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :workout_type, "Workout Type" %>
+    <%= f.collection_select :workout_type_id, WorkoutType.all, :id, :name, {}, {:class => "form-control" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  </div>
+
+<% end %>

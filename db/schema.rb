@@ -62,7 +62,8 @@ ActiveRecord::Schema.define(version: 20161126053333) do
 
   create_table "workouts", force: :cascade do |t|
     t.string   "mood"
-    t.time     "length"
+    t.time     "begin"
+    t.time     "end"
     t.string   "title"
     t.datetime "date"
     t.integer  "user_id"

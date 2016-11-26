@@ -52,6 +52,6 @@ class WorkoutsController < ApplicationController
     end
 
     def workout_params
-      params.require(:workout).permit(:mood, :length, :title, :date, :workout_type_id)
+      params.require(:workout).permit(:title, :begin, :end, :mood, :workout_type_id)
     end
 end
