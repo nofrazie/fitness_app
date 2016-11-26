@@ -1,1 +1,9 @@
 <h1><%= current_user.name %>'s Dashboard</h1>
+
+<% if current_user.workouts.any? %>
+List of workouts
+<% else %>
+  <h3>Welcome to your personal training applicaiton</h3>
+  <p>If you haven't begun logging new workouts please get started below.</p>
+  <%= link_to "Start Here", new_workout_path, class: "btn btn-default" %>
+<% end %>

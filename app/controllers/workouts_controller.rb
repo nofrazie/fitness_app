@@ -1,5 +1,7 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @workouts = Workout.all
@@ -52,6 +54,11 @@ class WorkoutsController < ApplicationController
     end
 
     def workout_params
-      params.require(:workout).permit(:title, :begin, :end, :mood, :workout_type_id)
+      params.require(:workout).permit(:title, :date, :begin, :end, :mood, :workout_type_id)
+    end
+
+    def correct_user
+      @workout = current_user.workouts.find_by(id: params[:id])
+      redirect_to root_url if @workouts.nil?
     end
 end

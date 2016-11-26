@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20161126053333) do
     t.time     "begin"
     t.time     "end"
     t.string   "title"
-    t.datetime "date"
+    t.date     "date"
     t.integer  "user_id"
     t.integer  "workout_type_id"
     t.datetime "created_at",      null: false

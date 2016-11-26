@@ -5,7 +5,7 @@ class CreateWorkouts < ActiveRecord::Migration[5.0]
       t.time :begin
       t.time :end
       t.string :title
-      t.datetime :date
+      t.date :date
       t.references :user, index: true, foreign_key: true
       t.references :workout_type, index: true, foreign_key: true
       t.timestamps
