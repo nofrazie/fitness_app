@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031104556) do
+ActiveRecord::Schema.define(version: 20161126053333) do
+
+  create_table "body_parts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exercise_sets", force: :cascade do |t|
+    t.integer  "number"
+    t.integer  "reps"
+    t.integer  "weight"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["exercise_id"], name: "index_exercise_sets_on_exercise_id"
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.integer  "workout_id"
+    t.integer  "body_part_id"
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["body_part_id"], name: "index_exercises_on_body_part_id"
+    t.index ["workout_id"], name: "index_exercises_on_workout_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +52,25 @@ ActiveRecord::Schema.define(version: 20161031104556) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "workout_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.string   "mood"
+    t.string   "length"
+    t.string   "title"
+    t.datetime "date"
+    t.integer  "user_id"
+    t.integer  "workout_types_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_workouts_on_user_id"
+    t.index ["workout_types_id"], name: "index_workouts_on_workout_types_id"
   end
 
 end
