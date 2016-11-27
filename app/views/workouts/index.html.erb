@@ -9,9 +9,7 @@
   <div class="workouts">
     <ul>
       <% @workouts.each do |w| %>
-        <%= link_to w do %>
-          <li><%= w.title %>, Mood: <%= w.mood %> and I workout out for <%= w.length %></li>
-        <% end %>
+        <%= link_to w.title, w %><span> Date: <%= w.date %></span>
       <% end %>
     </ul>
   </div>
