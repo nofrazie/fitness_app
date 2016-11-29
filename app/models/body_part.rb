@@ -1,4 +1,4 @@
 class BodyPart < ApplicationRecord
-  belongs_to :workout
-  belongs_to :excercise
+  has_many :compounds
+  has_many :exercises, through: :compounds
 end

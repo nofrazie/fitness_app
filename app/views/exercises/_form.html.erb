@@ -1,0 +1,16 @@
+<%= simple_form_for [@workout, @exercise] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.input :name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.association :body_parts,   as: :check_boxes %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  </div>
+
+<% end %>

@@ -2,7 +2,6 @@ class CreateExercises < ActiveRecord::Migration[5.0]
   def change
     create_table :exercises do |t|
       t.belongs_to :workout, index: true
-      t.belongs_to :body_part, index: true
       t.string :name
       t.timestamps
     end

@@ -9,7 +9,7 @@
   <div class="workouts">
     <ul>
       <% @workouts.each do |w| %>
-        <%= link_to w.title, w %><span> Date: <%= w.date %></span>
+        <%= link_to w.title, workout_path(w) %><span> Date: <%= w.date %></span>
       <% end %>
     </ul>
   </div>
