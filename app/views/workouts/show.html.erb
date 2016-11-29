@@ -25,7 +25,11 @@
     <%= link_to "New Exercise", new_workout_exercise_path(@workout), class: "btn btn-primary" %>
     <% if @workout.exercises.any? %>
       <h3>Exercises (<%= @workout.exercises.count %>)</h3>
-      <%= render @exercises %>
+      <% @exercises.each do |e| %>
+        <ul>
+          <li><%= link_to e.name, workout_exercise_path(@workout, e) %></li>
+        </ul>
+      <% end %>
     <% end %>
   </div>
 </div>

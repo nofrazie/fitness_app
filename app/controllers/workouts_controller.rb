@@ -58,10 +58,6 @@ class WorkoutsController < ApplicationController
       params.require(:workout).permit(:title, :date, :begin, :end, :mood, :workout_type_id)
     end
 
-    # def exercise_params
-    #   params.require(:exercise).permit(:name, :body_part_id)
-    # end
-
     def correct_user
       @workout = current_user.workouts.find_by(id: params[:id])
       redirect_to root_url if @workouts.nil?

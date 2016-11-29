@@ -2,7 +2,8 @@ class ExercisesController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def show
-    @exercise = Exercise.find(params[:id])
+    @workout = Workout.find(params[:workout_id])
+    @exercise = @workout.exercises.find_by_id(params[:id])
   end
 
   def new
@@ -19,6 +20,13 @@ class ExercisesController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def destroy
+    @workout = Workout.find(params[:workout_id])
+    Exercise.find(params[:id]).destroy
+    flash[:success] = "Exercise deleted"
+    redirect_to workout_path(@workout)
   end
 
   private
