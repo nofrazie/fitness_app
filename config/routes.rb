@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :workouts do
-    resources :exercises
+    resources :exercises do
+      resources :exercise_sets, as: :sets
+    end
   end
   resources :workout_types
-  resources :exercise_sets
   resources :body_parts
 end

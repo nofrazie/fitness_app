@@ -1,2 +1,9 @@
-<h1><%= @exercise.name %></h1>
-<%= link_to "delete", workout_exercise_path(@workout, @exercise), method: :delete, data: { confirm: "You sure?" } %>
+<% provide(:title, @exercise.name) %>
+
+<div class="row">
+  <h1><%= @exercise.name %>  <span><%= link_to "Edit", edit_workout_exercise_path(@workout, @exercise), class: "btn btn-default" %></span></h1>
+
+  <%= link_to "New Set", new_workout_exercise_set_path(@exercise), class: "btn btn-primary" %>
+
+  <%= link_to "delete", workout_exercise_path(@workout, @exercise), method: :delete, data: { confirm: "You sure?" } %>
+</div>
