@@ -2,9 +2,9 @@
 
 <!-- MAIN PAGE CONTENT -->
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-6">
     <section class="workout_info">
-      <h1><%= @workout.title %></h1>
+      <h1 class="page-header"><%= @workout.title %></h1>
       <h4>Info</h4>
       <ul>
         <li>Date: <%= @workout.date %></li>
@@ -21,15 +21,25 @@
   </aside>
 
 <!-- Exercises -->
-  <div class="col-md-8">
+  <div class="col-md-6">
     <%= link_to "New Exercise", new_workout_exercise_path(@workout), class: "btn btn-primary" %>
     <% if @workout.exercises.any? %>
       <h3>Exercises (<%= @workout.exercises.count %>)</h3>
-      <% @exercises.each do |e| %>
-        <ul>
-          <li><%= link_to e.name, workout_exercise_path(@workout, e) %></li>
-        </ul>
-      <% end %>
+      <table class="table table-sriped">
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @exercises.each do |exercise, n=0| %>
+          <% n += 1 %>
+            <tr>
+              <td><%= n %>. <%=link_to exercise.name, workout_exercise_path(@workout, exercise) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
   </div>
 </div>
