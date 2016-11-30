@@ -4,6 +4,7 @@ class ExercisesController < ApplicationController
   def show
     @workout = Workout.find(params[:workout_id])
     @exercise = @workout.exercises.find_by_id(params[:id])
+    @sets = @exercise.exercise_sets
   end
 
   def new
@@ -15,7 +16,7 @@ class ExercisesController < ApplicationController
     @workout = Workout.find(params[:workout_id])
     @exercise = @workout.exercises.build(exercise_params)
     if @exercise.save
-      flash[:success] = "Workout created!"
+      flash[:success] = "Exercise created!"
       redirect_to @workout
     else
       render "new"
