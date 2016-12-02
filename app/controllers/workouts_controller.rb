@@ -2,9 +2,10 @@ class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @workouts = Workout.all
+    @workouts = Workout.all.order(sort_column + " " + sort_direction)
   end
 
   def show
@@ -61,5 +62,13 @@ class WorkoutsController < ApplicationController
     def correct_user
       @workout = current_user.workouts.find_by(id: params[:id])
       redirect_to root_url if @workouts.nil?
+    end
+
+    def sort_column
+      Workout.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
 end
