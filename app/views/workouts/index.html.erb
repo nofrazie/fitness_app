@@ -1,4 +1,5 @@
 <% provide(:title, "Workouts") %>
+<% provide(:button_text, "Create") %>
 
 <!-- MAIN PAGE CONTENT -->
 <div class="row">
@@ -18,17 +19,8 @@
             <th><%= sortable "workout_type_id", "Type" %><%= sortable_class "workout_type_id" %></th>
           </tr>
         </thead>
-        <tbody>
-          <% @workouts.each do |workout| %>
-            <tr>
-              <td><%= workout.date.strftime("%B %e, %Y") %></td>
-              <td><%= link_to workout.title, workout %></td>
-              <td><%= workout.mood %></td>
-              <td><%= workout.begin.strftime("%l:%M %p") %></td>
-              <td><%= workout.end.strftime("%l:%M %p") %></td>
-              <td><%= workout.workout_type.name %></td>
-            </tr>
-          <% end %>
+        <tbody id="container_workouts">
+          <%= render @workouts %>
         </tbody>
       </table>
     </div>

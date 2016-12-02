@@ -5,7 +5,7 @@
   <aside class="col-md-6">
     <section class="workout_info">
       <h1 class="page-header"><%= @workout.title %></h1>
-      <h4>Info</h4>
+      <h4>Info <span><small><td><%= link_to "Delete", workout_path(@workout), method: :delete, data: { confirm: "Do you want to delete this workout?" }, class: "btn btn-xs btn-danger" %></td></small></span></h4>
       <ul>
         <li>Date: <%= @workout.date %></li>
         <li>How I felt: <%= @workout.mood %></li>
