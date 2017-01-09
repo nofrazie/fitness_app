@@ -4,7 +4,7 @@
   <h3>Recent Workouts</h3>
   <ul>
     <% current_user.workouts.last(3).each do |w| %>
-      <li><%= link_to w.title, w %></li>
+      <li><%= link_to w.title, w %> Date: <%= w.date %></li>
     <% end %>
   </ul>
 <% else %>

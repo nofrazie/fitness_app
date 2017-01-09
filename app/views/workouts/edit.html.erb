@@ -1,6 +1,10 @@
-<% provide(:title, "Edit the <%= @workout.title %> Workout") %>
+<% provide(:title, "Edit - " + @workout.title) %>
 <% provide(:button_text, 'Update') %>
 
 <!-- MAIN PAGE CONTENT -->
-<h1 class="page-header">Edit Workouts</h1>
-<%= render "form" %>
+<div class="row">
+  <div class="col-md-4">
+    <h1 class="page-header">Edit Workouts</h1>
+    <%= render "form" %>
+  </div>
+</div>

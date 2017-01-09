@@ -4,5 +4,6 @@
   <td><%= workout.mood %></td>
   <td><%= workout.begin.strftime("%l:%M %p") %></td>
   <td><%= workout.end.strftime("%l:%M %p") %></td>
+  <td><%= (workout.end - workout.begin) / 60 %> min</td>
   <td><%= workout.workout_type.name %></td>
 </tr>
