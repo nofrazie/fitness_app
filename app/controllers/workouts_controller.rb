@@ -9,7 +9,7 @@ class WorkoutsController < ApplicationController
   end
 
   def show
-    @exercises = @workout.exercises
+    @exercises = @workout.exercises.order(created_at: :asc)
   end
 
   def new

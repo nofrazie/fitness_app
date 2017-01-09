@@ -5,5 +5,4 @@ class Exercise < ApplicationRecord
   has_many :exercise_sets
   validates :workout_id, presence: true
   validates :name, presence: true, length: { minimum: 2 }
-  default_scope -> { order(created_at: :desc) }
 end

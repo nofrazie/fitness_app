@@ -26,10 +26,9 @@
           <h4>Exercises (<%= @workout.exercises.count %>)</h4>
         </div>
         <ul class="list-group">
-          <% @exercises.each do |exercise, n=0| %>
-            <% n += 1 %>
+          <% @exercises.each do |exercise| %>
             <li class="list-group-item">
-              <%= n %>. <%=link_to exercise.name, workout_exercise_path(@workout, exercise) %>
+              <%=link_to exercise.name, workout_exercise_path(@workout, exercise) %>
               <% exercise.body_parts.each do |bp| %>
                 <span class="label label-primary">bp.name</span>
               <% end %>
