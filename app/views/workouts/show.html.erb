@@ -20,27 +20,29 @@
 
 <!-- Exercises -->
   <div class="col-md-6">
-    <% if @workout.exercises.any? %>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>Exercises (<%= @workout.exercises.count %>)</h4>
-        </div>
+    <div class="panel panel-default exercise-panel">
+      <div class="panel-heading">
+        <h4>Exercises (<%= @workout.exercises.count %>)</h4>
+      </div>
+
+      <% if @workout.exercises.any? %>
         <ul class="list-group">
           <% @exercises.each do |exercise| %>
             <li class="list-group-item">
-              <%=link_to exercise.name, workout_exercise_path(@workout, exercise) %>
+              <%= link_to exercise.name, workout_exercise_path(@workout, exercise) %>
               <% exercise.body_parts.each do |bp| %>
-                <span class="label label-primary">bp.name</span>
+                <span class="label label-primary"><%= bp.name %></span>
               <% end %>
               <span class="badge"><%= exercise.exercise_sets.count %> sets</span>
             </li>
           <% end %>
         </ul>
-        <div class="panel-footer">
-          <%= link_to "New Exercise", new_workout_exercise_path(@workout), class: "btn btn-primary btn-sm" %>
-        </div>
+      <% end %>
+
+      <div class="panel-footer">
+        <%= link_to "New Exercise", new_workout_exercise_path(@workout), class: "btn btn-primary btn-sm" %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 

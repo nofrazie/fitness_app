@@ -1,4 +1,3 @@
 class BodyPart < ApplicationRecord
-  has_many :compounds
-  has_many :exercises, through: :compounds
+  has_and_belongs_to_many :exercises
 end

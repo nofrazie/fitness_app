@@ -167,6 +167,10 @@ input {
   }
 }
 
+.checkbox input[type="checkbox"] {
+  margin-left: 0px;
+}
+
 #session_remember_me {
   width: auto;
   margin-left: 0;
