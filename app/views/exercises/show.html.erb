@@ -4,6 +4,11 @@
   <div class="col-md-8">
     <h1><%= link_to @workout.title, @workout %></h1>
     <h3><%= @exercise.name %>  <span><%= link_to "Edit", edit_workout_exercise_path(@workout, @exercise), class: "btn btn-default" %></span></h3>
+    <div class="body_part_tags">
+      <% @exercise.body_parts.each do |bp| %>
+        <span class="label label-success"><%= bp.name %></span>
+      <% end %>
+    </div>
 
     <%= link_to "New Set", new_workout_exercise_set_path(@workout, @exercise), class: "btn btn-primary" %>
     <br>

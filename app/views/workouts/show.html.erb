@@ -31,7 +31,7 @@
             <li class="list-group-item">
               <%= link_to exercise.name, workout_exercise_path(@workout, exercise) %>
               <% exercise.body_parts.each do |bp| %>
-                <span class="label label-primary"><%= bp.name %></span>
+                <span class="label label-success"><%= bp.name %></span>
               <% end %>
               <span class="badge"><%= exercise.exercise_sets.count %> sets</span>
             </li>
