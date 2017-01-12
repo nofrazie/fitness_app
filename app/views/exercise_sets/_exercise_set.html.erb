@@ -2,5 +2,6 @@
   <td><%= exercise_set.number  %></td>
   <td><%= exercise_set.reps    %></td>
   <td><%= exercise_set.weight  %> lbs</td>
+  <td><%= link_to "Edit", edit_workout_exercise_set_path(@workout, @exercise, exercise_set.id) %></td>
   <td><%= link_to "X", workout_exercise_set_path(@workout, @exercise, exercise_set.id), method: :delete, data: { confirm: "Do you want to delete this set?" }, class: "btn btn-xs btn-danger" %></td>
 </tr>
