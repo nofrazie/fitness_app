@@ -1,0 +1,9 @@
+<% provide(:title, "Body Parts") %>
+
+<h1 class="page-header">Body Parts</h1>
+<%= link_to "New Body Part", new_body_part_path, class: "btn btn-primary" %>
+<ul>
+  <% @body_parts.each do |bp| %>
+    <li><%= bp.name %></li>
+  <% end %>
+</ul>
