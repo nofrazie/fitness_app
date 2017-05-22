@@ -2,8 +2,20 @@
   <td><%= workout.date.strftime("%B %e, %Y") %></td>
   <td><%= link_to workout.title, workout %></td>
   <td><%= workout.mood %></td>
-  <td><%= workout.begin.strftime("%l:%M %p") %></td>
-  <td><%= workout.end.strftime("%l:%M %p") %></td>
-  <td><%= (workout.end - workout.begin) / 60 %> min</td>
+  <% if workout.begin != nil %>
+    <td><%= workout.begin.strftime("%l:%M %p") %></td>
+  <% else %>
+    <td></td>
+  <% end %>
+  <% if workout.end != nil %>
+    <td><%= workout.end.strftime("%l:%M %p") %></td>
+  <% else %>
+    <td></td>
+  <% end %>
+  <% if workout.begin != nil && workout.end != nil %>
+    <td><%= (workout.end - workout.begin) / 60 %> min</td>
+  <% else %>
+    <td></td>
+  <% end %>
   <td><%= workout.workout_type.name %></td>
 </tr>
